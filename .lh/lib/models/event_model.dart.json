@@ -1,0 +1,26 @@
+{
+    "sourceFile": "lib/models/event_model.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1786096439670,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1786096570012,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,9 +16,30 @@\n     this.description = \"\",\n     this.isFavorite = false,\n   });\n \n-  formJson(Map<String, dynamic> json) {}\n+  EventModel formJson(Map<String, dynamic> json) {\n+    return EventModel(\n+      id: json['id'],\n+      title: json['title'],\n+      description: json['description'],\n+      isFavorite: json['isFavorite'],\n+      date: json['date'],\n+      category: json['category'],\n+    );\n+  }\n+\n+  Map<String, dynamic> toJson() {\n+    return {\n+      \"id\": id,\n+      \"title\": title,\n+      \"description\": description,\n+      \"isFavorite\": isFavorite,\n+      \"date\": date,\n+      \"category\": category,\n+    };\n+  }\n+\n   String get day => date.day.toString().padLeft(2, \"0\");\n \n   String get month => _monthNames[date.month - 1];\n \n"
+                },
+                {
+                    "date": 1786096623896,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,9 +16,9 @@\n     this.description = \"\",\n     this.isFavorite = false,\n   });\n \n-  EventModel formJson(Map<String, dynamic> json) {\n+  static EventModel formJson(Map<String, dynamic> json) {\n     return EventModel(\n       id: json['id'],\n       title: json['title'],\n       description: json['description'],\n"
+                }
+            ],
+            "date": 1786096439670,
+            "name": "Commit-0",
+            "content": "import 'package:evently/models/event_category.dart';\n\nclass EventModel {\n  final String id;\n  final String title;\n  final String description;\n  final DateTime date;\n  final EventCategory category;\n  bool isFavorite;\n\n  EventModel({\n    required this.id,\n    required this.title,\n    required this.date,\n    required this.category,\n    this.description = \"\",\n    this.isFavorite = false,\n  });\n\nformJson(Map<String,dynamic> json){}\n  String get day => date.day.toString().padLeft(2, \"0\");\n\n  String get month => _monthNames[date.month - 1];\n\n  static const List<String> _monthNames = [\n    \"Jan\",\n    \"Feb\",\n    \"Mar\",\n    \"Apr\",\n    \"May\",\n    \"Jun\",\n    \"Jul\",\n    \"Aug\",\n    \"Sep\",\n    \"Oct\",\n    \"Nov\",\n    \"Dec\",\n  ];\n\n  static final List<EventModel> dummyEvents = [\n    EventModel(\n      id: \"1\",\n      title: \"This is a Birthday Party\",\n      date: DateTime(2026, 1, 21),\n      category: EventCategory.birthday,\n      isFavorite: true,\n    ),\n    EventModel(\n      id: \"2\",\n      title: \"Meeting for Updating The Development Method\",\n      date: DateTime(2026, 1, 22),\n      category: EventCategory.meeting,\n    ),\n    EventModel(\n      id: \"3\",\n      title: \"Discover unique exhibitions and talents\",\n      date: DateTime(2026, 1, 23),\n      category: EventCategory.exhibition,\n    ),\n    EventModel(\n      id: \"4\",\n      title: \"Weekend cycling race with friends\",\n      date: DateTime(2026, 1, 24),\n      category: EventCategory.sport,\n      isFavorite: true,\n    ),\n    EventModel(\n      id: \"5\",\n      title: \"Monthly book club discussion\",\n      date: DateTime(2026, 1, 25),\n      category: EventCategory.bookClub,\n    ),\n  ];\n}\n"
+        }
+    ]
+}

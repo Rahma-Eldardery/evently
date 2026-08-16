@@ -1,0 +1,34 @@
+{
+    "sourceFile": "lib/features/home/home_screen.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 4,
+            "patches": [
+                {
+                    "date": 1785497394927,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1785498050343,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,7 +5,9 @@\n   const HomeScreen({super.key});\n \n   @override\n   Widget build(BuildContext context) {\n-    return const Placeholder();\n+    return Scaffold(\n+      appBar: ,\n+    );\n   }\n }\n"
+                },
+                {
+                    "date": 1785498064673,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,8 +6,12 @@\n \n   @override\n   Widget build(BuildContext context) {\n     return Scaffold(\n-      appBar: ,\n+  body: Column(\n+    children: [\n+      \n+    ],\n+  ),\n     );\n   }\n }\n"
+                },
+                {
+                    "date": 1785498073029,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,10 +5,7 @@\n   const HomeScreen({super.key});\n \n   @override\n   Widget build(BuildContext context) {\n-    return Scaffold(body: Column(children: [\n-      \n-    ],\n-  ));\n+    return Scaffold(body: Column(children: [Text(\"Welcome Back ✨\")]));\n   }\n }\n"
+                },
+                {
+                    "date": 1785498100191,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,7 +5,7 @@\n   const HomeScreen({super.key});\n \n   @override\n   Widget build(BuildContext context) {\n-    return Scaffold(body: Column(children: [Text(\"Welcome Back ✨\")]));\n+    return Scaffold(body: SafeArea(child: Column(children: [Text(\"Welcome Back ✨\")])));\n   }\n }\n"
+                }
+            ],
+            "date": 1785497394927,
+            "name": "Commit-0",
+            "content": "import 'package:flutter/material.dart';\n\nclass HomeScreen extends StatelessWidget {\n  static const String routeName = \"HOME\";\n  const HomeScreen({super.key});\n\n  @override\n  Widget build(BuildContext context) {\n    return const Placeholder();\n  }\n}\n"
+        }
+    ]
+}

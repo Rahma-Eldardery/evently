@@ -1,0 +1,34 @@
+{
+    "sourceFile": "lib/core/my_provider.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 4,
+            "patches": [
+                {
+                    "date": 1786707468076,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1786707900659,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,3 +1,8 @@\n+import 'package:evently/models/user_model.dart';\n+import 'package:firebase_auth/firebase_auth.dart';\n import 'package:flutter/material.dart';\n \n-class MyProvider extends ChangeNotifier {}\n+class MyProvider extends ChangeNotifier {\n+  UserModel userModel;\n+  User firebaseUser;\n+}\n"
+                },
+                {
+                    "date": 1786708036018,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,23 @@\n+import 'package:evently/core/firebase_functions.dart';\n import 'package:evently/models/user_model.dart';\n import 'package:firebase_auth/firebase_auth.dart';\n import 'package:flutter/material.dart';\n \n class MyProvider extends ChangeNotifier {\n-  UserModel userModel;\n-  User firebaseUser;\n+  UserModel? userModel;\n+  User? firebaseUser;\n+\n+  MyProvider() {\n+    firebaseUser = FirebaseAuth.instance.currentUser;\n+\n+    if(firebaseUser != null ){\n+\n+      initUser();\n+    }\n+  }\n+\n+\n+  initUser(){\n+    userModel = FirebaseFunctions.\n+  }\n }\n"
+                },
+                {
+                    "date": 1786708479194,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,15 +9,14 @@\n \n   MyProvider() {\n     firebaseUser = FirebaseAuth.instance.currentUser;\n \n-    if(firebaseUser != null ){\n-\n+    if (firebaseUser != null) {\n       initUser();\n     }\n   }\n \n-\n-  initUser(){\n-    userModel = FirebaseFunctions.\n+  initUser() async {\n+    userModel = await FirebaseFunctions.readUser(firebaseUser!.uid);\n+    notifyListeners();\n   }\n }\n"
+                },
+                {
+                    "date": 1786708974718,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,8 +15,9 @@\n     }\n   }\n \n   initUser() async {\n+    firebaseUser = FirebaseAuth.instance.currentUser;\n     userModel = await FirebaseFunctions.readUser(firebaseUser!.uid);\n     notifyListeners();\n   }\n }\n"
+                }
+            ],
+            "date": 1786707468076,
+            "name": "Commit-0",
+            "content": "import 'package:flutter/material.dart';\n\nclass MyProvider extends ChangeNotifier {}\n"
+        }
+    ]
+}

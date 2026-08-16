@@ -1,0 +1,30 @@
+{
+    "sourceFile": "lib/models/user_model.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1786707545703,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1786707732510,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,5 +2,14 @@\n   String id;\n   String name;\n   String email;\n   String createdAt;\n+\n+  UserModel({this.id=\"\",required this.name,required this.email,required this.createdAt});\n+\n+  UserModel fromJson(Map<String , dynamic> json ):this(\n+id: json['id'],\n+name: json['name'],\n+email: json['email'],\n+createdAt: json['createdAt'],\n+  );\n }\n"
+                },
+                {
+                    "date": 1786707851656,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,26 @@\n+class UserModel {\n+  String id;\n+  String name;\n+  String email;\n+  String createdAt;\n+\n+  UserModel({\n+    this.id = \"\",\n+    required this.name,\n+    required this.email,\n+    required this.createdAt,\n+  });\n+\n+  UserModel fromJson(Map<String, dynamic> json) {\n+    return UserModel(\n+      id: json['id'],\n+      name: json['name'],\n+      email: json['email'],\n+      createdAt: json['createdAt'],\n+    );\n+  }\n+\n+  Map<String, dynamic> toJson() {\n+    return {\"id\": id, \"name\": name, \"email\": email, \"createdAt\": createdAt};\n+  }\n+}\n"
+                },
+                {
+                    "date": 1786708200029,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,34 +10,16 @@\n     required this.email,\n     required this.createdAt,\n   });\n \n-  UserModel fromJson(Map<String, dynamic> json) {\n-    return UserModel(\n-      id: json['id'],\n-      name: json['name'],\n-      email: json['email'],\n-      createdAt: json['createdAt'],\n-    );\n-  }\n+  UserModel.fromJson(Map<String, dynamic> json)\n+    : this(\n+        id: json['id'],\n+        name: json['name'],\n+        email: json['email'],\n+        createdAt: json['createdAt'],\n+      );\n \n   Map<String, dynamic> toJson() {\n     return {\"id\": id, \"name\": name, \"email\": email, \"createdAt\": createdAt};\n   }\n }\n-class UserModel {\n-\n-  \n-  String id;\n-  String name;\n-  String email;\n-  String createdAt;\n-\n-  UserModel({this.id=\"\",required this.name,required this.email,required this.createdAt});\n-\n-  UserModel fromJson(Map<String , dynamic> json ):this(\n-id: json['id'],\n-name: json['name'],\n-email: json['email'],\n-createdAt: json['createdAt'],\n-  );\n-}\n"
+                }
+            ],
+            "date": 1786707545703,
+            "name": "Commit-0",
+            "content": "class UserModel {\n\n  \n  String id;\n  String name;\n  String email;\n  String createdAt;\n}\n"
+        }
+    ]
+}

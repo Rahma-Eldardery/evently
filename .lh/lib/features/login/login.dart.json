@@ -1,0 +1,30 @@
+{
+    "sourceFile": "lib/features/login/login.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1785496605357,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1785496625271,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,11 +1,13 @@\n import 'package:flutter/material.dart';\n \n class LoginScreen extends StatelessWidget {\n-  static const String routeName=\"login\"\n+  static const String routeName=\"login\";\n   const LoginScreen({super.key});\n \n   @override\n   Widget build(BuildContext context) {\n-    return const Placeholder();\n+    return Scaffold(\n+      \n+    );\n   }\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1785496747491,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,7 +5,14 @@\n   const LoginScreen({super.key});\n \n   @override\n   Widget build(BuildContext context) {\n-    return Scaffold();\n+    return Scaffold(\n+\n+      body: Column(\n+        children: [\n+          Image.asset(\"assets/images/logo.png\")\n+        ],\n+      ),\n+    );\n   }\n }\n"
+                },
+                {
+                    "date": 1785496753874,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,8 +6,8 @@\n \n   @override\n   Widget build(BuildContext context) {\n     return Scaffold(\n-      body: Column(children: [Image.asset(\"assets/images/logo.png\")]),\n+      body: SafeArea(child: Column(children: [Image.asset(\"assets/images/logo.png\")])),\n     );\n   }\n }\n"
+                }
+            ],
+            "date": 1785496605357,
+            "name": "Commit-0",
+            "content": "import 'package:flutter/material.dart';\n\nclass LoginScreen extends StatelessWidget {\n  static const String routeName=\"login\"\n  const LoginScreen({super.key});\n\n  @override\n  Widget build(BuildContext context) {\n    return const Placeholder();\n  }\n}"
+        }
+    ]
+}

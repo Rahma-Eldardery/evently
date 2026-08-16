@@ -1,0 +1,26 @@
+{
+    "sourceFile": "assets/translations/ar.json",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1785486687967,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1785486710982,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n {\n-    \"onboarding_title\": \"Personalize Your Experience\",\n-    \"onboarding_desc\": \"Choose your preferred theme and language to get started with a comfortable, tailored experience that suits your style.\",\n-    \"arabic\": \"Arabic\",\n+    \"onboarding_title\": \"خصّص تجربتك\",\n+    \"onboarding_desc\": \"اختر السمة واللغة المفضلة لديك للبدء بتجربة مريحة ومصمّمة لتناسب أسلوبك.\",\n+    \"arabic\": \"العربية\",\n     \"english\": \"English\",\n-    \"theme\": \"Theme\",\n-    \"language\": \"Language\"\n+    \"theme\": \"السمة\",\n+    \"language\": \"اللغة\"\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1785486819112,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,6 +3,7 @@\n     \"onboarding_desc\": \"اختر السمة واللغة المفضلة لديك للبدء بتجربة مريحة ومصمّمة لتناسب أسلوبك.\",\n     \"arabic\": \"العربية\",\n     \"english\": \"English\",\n     \"theme\": \"السمة\",\n+    \"lets_start\": \"يلا بينا\",\n     \"language\": \"اللغة\"\n }\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1785486687967,
+            "name": "Commit-0",
+            "content": "{\n    \"onboarding_title\": \"Personalize Your Experience\",\n    \"onboarding_desc\": \"Choose your preferred theme and language to get started with a comfortable, tailored experience that suits your style.\",\n    \"arabic\": \"Arabic\",\n    \"english\": \"English\",\n    \"theme\": \"Theme\",\n    \"language\": \"Language\"\n}"
+        }
+    ]
+}

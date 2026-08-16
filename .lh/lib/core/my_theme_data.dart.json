@@ -1,0 +1,66 @@
+{
+    "sourceFile": "lib/core/my_theme_data.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 12,
+            "patches": [
+                {
+                    "date": 1785488271188,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1785488319208,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,9 @@\n import 'package:flutter/material.dart';\n \n class MyThemeData {\n-  static ThemeData lightTheme = ThemeData();\n+  static ThemeData lightTheme = ThemeData(\n+    scaffoldBackgroundColor: Colors.white,\n+    elevatedButtonTheme: ElevatedButtonThemeData(),\n+  );\n   static ThemeData darkTheme = ThemeData();\n }\n"
+                },
+                {
+                    "date": 1785488331417,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,8 +2,15 @@\n \n class MyThemeData {\n   static ThemeData lightTheme = ThemeData(\n     scaffoldBackgroundColor: Colors.white,\n-    elevatedButtonTheme: ElevatedButtonThemeData(),\n+    elevatedButtonTheme: ElevatedButtonThemeData(\n+      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 4),\n+      backgroundColor: Colors.white,\n+      shape: RoundedRectangleBorder(\n+        borderRadius: BorderRadius.circular(12),\n+        side: BorderSide(color: AppColors.greyColor.withValues(alpha: 0.2)),\n+      ),\n+    ),\n   );\n   static ThemeData darkTheme = ThemeData();\n }\n"
+                },
+                {
+                    "date": 1785488354948,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,15 +1,18 @@\n+import 'package:evently/core/app_colors.dart';\n import 'package:flutter/material.dart';\n \n class MyThemeData {\n   static ThemeData lightTheme = ThemeData(\n     scaffoldBackgroundColor: Colors.white,\n     elevatedButtonTheme: ElevatedButtonThemeData(\n-      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 4),\n-      backgroundColor: Colors.white,\n-      shape: RoundedRectangleBorder(\n-        borderRadius: BorderRadius.circular(12),\n-        side: BorderSide(color: AppColors.greyColor.withValues(alpha: 0.2)),\n+      style: ElevatedButton.styleFrom(\n+        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 4),\n+        backgroundColor: Colors.white,\n+        shape: RoundedRectangleBorder(\n+          borderRadius: BorderRadius.circular(12),\n+          side: BorderSide(color: AppColors.greyColor.withValues(alpha: 0.2)),\n+        ),\n       ),\n     ),\n   );\n   static ThemeData darkTheme = ThemeData();\n"
+                },
+                {
+                    "date": 1785488419533,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n     scaffoldBackgroundColor: Colors.white,\n     elevatedButtonTheme: ElevatedButtonThemeData(\n       style: ElevatedButton.styleFrom(\n         padding: EdgeInsets.symmetric(horizontal: 16, vertical: 4),\n-        backgroundColor: Colors.white,\n+        backgroundColor: AppColors.primaryColor,\n         shape: RoundedRectangleBorder(\n           borderRadius: BorderRadius.circular(12),\n           side: BorderSide(color: AppColors.greyColor.withValues(alpha: 0.2)),\n         ),\n"
+                },
+                {
+                    "date": 1785488565360,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,7 +13,10 @@\n           side: BorderSide(color: AppColors.greyColor.withValues(alpha: 0.2)),\n         ),\n       ),\n     ),\n+    textTheme: TextTheme(\n+      titleLarge: \n+    )\n   );\n   static ThemeData darkTheme = ThemeData();\n }\n"
+                },
+                {
+                    "date": 1785488585108,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,7 @@\n import 'package:evently/core/app_colors.dart';\n import 'package:flutter/material.dart';\n+import 'package:google_fonts/google_fonts.dart';\n \n class MyThemeData {\n   static ThemeData lightTheme = ThemeData(\n     scaffoldBackgroundColor: Colors.white,\n@@ -14,9 +15,13 @@\n         ),\n       ),\n     ),\n     textTheme: TextTheme(\n-      titleLarge: \n-    )\n+      titleLarge: GoogleFonts.poppins(\n+        fontSize: 20,\n+        fontWeight: FontWeight.w500,\n+      ),\n+      titleMedium: \n+    ),\n   );\n   static ThemeData darkTheme = ThemeData();\n }\n"
+                },
+                {
+                    "date": 1785488593550,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,9 +19,12 @@\n       titleLarge: GoogleFonts.poppins(\n         fontSize: 20,\n         fontWeight: FontWeight.w500,\n       ),\n-      titleMedium: \n+      titleMedium: GoogleFonts.poppins(\n+        fontSize: 16,\n+        color: AppColors.greyColor,\n+      ),\n     ),\n   );\n   static ThemeData darkTheme = ThemeData();\n }\n"
+                },
+                {
+                    "date": 1785488654581,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,8 +23,12 @@\n       titleMedium: GoogleFonts.poppins(\n         fontSize: 16,\n         color: AppColors.greyColor,\n       ),\n+      labelMedium: GoogleFonts.poppins(\n+        fontSize: 18,\n+        color: AppColors.primaryColor,\n+      ),\n     ),\n   );\n   static ThemeData darkTheme = ThemeData();\n }\n"
+                },
+                {
+                    "date": 1785488708205,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,8 +27,9 @@\n       labelMedium: GoogleFonts.poppins(\n         fontSize: 18,\n         color: AppColors.primaryColor,\n       ),\n+      labelSmall: GoogleFonts.poppins(fontSize: 14, color: Colors.white),\n     ),\n   );\n   static ThemeData darkTheme = ThemeData();\n }\n"
+                },
+                {
+                    "date": 1785489210667,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,8 +14,20 @@\n           side: BorderSide(color: AppColors.greyColor.withValues(alpha: 0.2)),\n         ),\n       ),\n     ),\n+    colorScheme: ColorScheme(\n+      brightness: Brightness.light,\n+      primary: AppColors.primaryColor,\n+      onPrimary: Colors.grey,\n+      secondary: AppColors.greyColor,\n+      onSecondary: Colors.white,\n+      error: Colors.red,\n+      onError: Colors.white,\n+      surface: Colors.blue,\n+      onSurface: Colors.black,\n+      \n+    ),\n     textTheme: TextTheme(\n       titleLarge: GoogleFonts.poppins(\n         fontSize: 20,\n         fontWeight: FontWeight.w500,\n"
+                },
+                {
+                    "date": 1785489865546,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,19 +14,9 @@\n           side: BorderSide(color: AppColors.greyColor.withValues(alpha: 0.2)),\n         ),\n       ),\n     ),\n-    colorScheme: ColorScheme(\n-      brightness: Brightness.light,\n-      primary: AppColors.primaryColor,\n-      onPrimary: Colors.grey,\n-      secondary: AppColors.greyColor,\n-      onSecondary: Colors.white,\n-      error: Colors.red,\n-      onError: Colors.white,\n-      surface: Colors.blue,\n-      onSurface: Colors.black,\n-    ),\n+\n     textTheme: TextTheme(\n       titleLarge: GoogleFonts.poppins(\n         fontSize: 20,\n         fontWeight: FontWeight.w500,\n"
+                },
+                {
+                    "date": 1785489882463,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n     scaffoldBackgroundColor: Colors.white,\n     elevatedButtonTheme: ElevatedButtonThemeData(\n       style: ElevatedButton.styleFrom(\n         padding: EdgeInsets.symmetric(horizontal: 16, vertical: 4),\n-        backgroundColor: AppColors.primaryColor,\n+        backgroundColor: Color(0xFF0E3A99),\n         shape: RoundedRectangleBorder(\n           borderRadius: BorderRadius.circular(12),\n           side: BorderSide(color: AppColors.greyColor.withValues(alpha: 0.2)),\n         ),\n@@ -24,12 +24,9 @@\n       titleMedium: GoogleFonts.poppins(\n         fontSize: 16,\n         color: AppColors.greyColor,\n       ),\n-      labelMedium: GoogleFonts.poppins(\n-        fontSize: 18,\n-        color: AppColors.primaryColor,\n-      ),\n+      labelMedium: GoogleFonts.poppins(fontSize: 18, color: Color(0xFF0E3A99)),\n       labelSmall: GoogleFonts.poppins(fontSize: 14, color: Colors.white),\n     ),\n   );\n   static ThemeData darkTheme = ThemeData();\n"
+                }
+            ],
+            "date": 1785488271188,
+            "name": "Commit-0",
+            "content": "import 'package:flutter/material.dart';\n\nclass MyThemeData {\n  static ThemeData lightTheme = ThemeData();\n  static ThemeData darkTheme = ThemeData();\n}\n"
+        }
+    ]
+}

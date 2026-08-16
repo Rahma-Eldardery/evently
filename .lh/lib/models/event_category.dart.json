@@ -1,0 +1,34 @@
+{
+    "sourceFile": "lib/models/event_category.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 4,
+            "patches": [
+                {
+                    "date": 1786104612934,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1786104630855,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,8 +12,19 @@\n     required this.icon,\n     required this.imagePath,\n   });\n \n+  static EventCategory fromId(String? id) {\n+    return categories.firstWhere((c) => c.id == id, orElse: () => sport);\n+  }\n+\n+  static EventCategory? tryFromId(String? id) {\n+    for (final c in filters) {\n+      if (c.id == id) return c;\n+    }\n+    return null;\n+  }\n+\n   static const EventCategory all = EventCategory(\n     id: \"all\",\n     nameKey: \"all\",\n     icon: Icons.grid_view,\n"
+                },
+                {
+                    "date": 1786104766149,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n     required this.imagePath,\n   });\n \n   static EventCategory fromId(String? id) {\n-    return categories.firstWhere((c) => c.id == id, orElse: () => sport);\n+    return categories.firstWhere((c) => c.id == id, orElse: () => birthday);\n   }\n \n   static EventCategory? tryFromId(String? id) {\n     for (final c in filters) {\n"
+                },
+                {
+                    "date": 1786104773165,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n     required this.imagePath,\n   });\n \n   static EventCategory fromId(String? id) {\n-    return categories.firstWhere((c) => c.id == id, orElse: () => birthday);\n+    return categories.firstWhere((c) => c.id == id, orElse: () => sport);\n   }\n \n   static EventCategory? tryFromId(String? id) {\n     for (final c in filters) {\n"
+                },
+                {
+                    "date": 1786104824610,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n     required this.imagePath,\n   });\n \n   static EventCategory fromId(String? id) {\n-    return categories.firstWhere((c) => c.id == id, orElse: () => sport);\n+    return categories.firstWhere((c) => c.id == id,);\n   }\n \n   static EventCategory? tryFromId(String? id) {\n     for (final c in filters) {\n"
+                }
+            ],
+            "date": 1786104612934,
+            "name": "Commit-0",
+            "content": "import 'package:flutter/material.dart';\n\nclass EventCategory {\n  final String id;\n  final String nameKey;\n  final IconData icon;\n  final String imagePath;\n\n  const EventCategory({\n    required this.id,\n    required this.nameKey,\n    required this.icon,\n    required this.imagePath,\n  });\n\n  static const EventCategory all = EventCategory(\n    id: \"all\",\n    nameKey: \"all\",\n    icon: Icons.grid_view,\n    imagePath: \"\",\n  );\n\n  static const EventCategory sport = EventCategory(\n    id: \"sport\",\n    nameKey: \"sport\",\n    icon: Icons.directions_bike,\n    imagePath: \"assets/images/Sport.png\",\n  );\n\n  static const EventCategory birthday = EventCategory(\n    id: \"birthday\",\n    nameKey: \"birthday\",\n    icon: Icons.cake_outlined,\n    imagePath: \"assets/images/Birthday.png\",\n  );\n\n  static const EventCategory meeting = EventCategory(\n    id: \"meeting\",\n    nameKey: \"meeting\",\n    icon: Icons.laptop_mac,\n    imagePath: \"assets/images/Meeting.png\",\n  );\n\n  static const EventCategory bookClub = EventCategory(\n    id: \"book_club\",\n    nameKey: \"book_club\",\n    icon: Icons.menu_book,\n    imagePath: \"assets/images/Book Club.png\",\n  );\n\n  static const EventCategory exhibition = EventCategory(\n    id: \"exhibition\",\n    nameKey: \"exhibition\",\n    icon: Icons.color_lens_outlined,\n    imagePath: \"assets/images/Exhibition.png\",\n  );\n\n  /// Categories an event can belong to.\n  static const List<EventCategory> categories = [\n    sport,\n    birthday,\n    meeting,\n    bookClub,\n    exhibition,\n  ];\n\n  /// Categories plus the \"All\" entry, used by the home tab filter bar.\n  static const List<EventCategory> filters = [all, ...categories];\n}\n"
+        }
+    ]
+}

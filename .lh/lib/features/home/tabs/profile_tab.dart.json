@@ -1,0 +1,26 @@
+{
+    "sourceFile": "lib/features/home/tabs/profile_tab.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1785499234345,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1786706501320,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,8 @@\n import 'package:easy_localization/easy_localization.dart';\n import 'package:evently/features/login/login.dart';\n import 'package:evently/providers/theme_provider.dart';\n+import 'package:firebase_auth/firebase_auth.dart';\n import 'package:flutter/material.dart';\n import 'package:provider/provider.dart';\n \n class ProfileTab extends StatelessWidget {\n@@ -69,8 +70,9 @@\n           const SizedBox(height: 16),\n           ProfileOptionCard(\n             title: \"logout\".tr(),\n             onTap: () {\n+              FirebaseAuth.instance.signOut();\n               Navigator.pushNamedAndRemoveUntil(\n                 context,\n                 LoginScreen.routeName,\n                 (r) => false,\n"
+                },
+                {
+                    "date": 1786706574081,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -69,10 +69,11 @@\n           ),\n           const SizedBox(height: 16),\n           ProfileOptionCard(\n             title: \"logout\".tr(),\n-            onTap: () {\n-              FirebaseAuth.instance.signOut();\n+            onTap: () async {\n+              print(FirebaseAuth.instance.currentUser!.uid);\n+              await FirebaseAuth.instance.signOut();\n               Navigator.pushNamedAndRemoveUntil(\n                 context,\n                 LoginScreen.routeName,\n                 (r) => false,\n"
+                }
+            ],
+            "date": 1785499234345,
+            "name": "Commit-0",
+            "content": "import 'package:flutter/material.dart';\n\nclass ProfileTab extends StatelessWidget {\n  const ProfileTab({super.key});\n\n  @override\n  Widget build(BuildContext context) {\n    return const Placeholder();\n  }\n}\n"
+        }
+    ]
+}

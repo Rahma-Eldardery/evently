@@ -1,0 +1,46 @@
+{
+    "sourceFile": "lib/features/onboarding/onboarding_screen.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 7,
+            "patches": [
+                {
+                    "date": 1785484198411,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1785484279484,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,7 +5,7 @@\n   const OnboardingScreen({super.key});\n \n   @override\n   Widget build(BuildContext context) {\n-    return const Placeholder();\n+    return Scaffold(appBar: AppBar());\n   }\n }\n"
+                },
+                {
+                    "date": 1785484288506,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,7 +5,13 @@\n   const OnboardingScreen({super.key});\n \n   @override\n   Widget build(BuildContext context) {\n-    return Scaffold(appBar: AppBar());\n+    return Scaffold(\n+      appBar: AppBar(),\n+      body: Column(children: [\n+        \n+      ],\n+    ),\n+    );\n   }\n }\n"
+                },
+                {
+                    "date": 1785484482846,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,11 +7,8 @@\n   @override\n   Widget build(BuildContext context) {\n     return Scaffold(\n       appBar: AppBar(),\n-      body: Column(children: [\n-        \n-      ],\n-    ),\n+      body: Column(children: [Image.asset(\"assets/images/\")]),\n     );\n   }\n }\n"
+                },
+                {
+                    "date": 1785484500731,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,8 +7,8 @@\n   @override\n   Widget build(BuildContext context) {\n     return Scaffold(\n       appBar: AppBar(),\n-      body: Column(children: [Image.asset(\"assets/images/\")]),\n+      body: Column(children: [Image.asset(\"assets/images/logo.png\")]),\n     );\n   }\n }\n"
+                },
+                {
+                    "date": 1785484567608,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n \n   @override\n   Widget build(BuildContext context) {\n     return Scaffold(\n-      appBar: AppBar(),\n+     \n       body: Column(children: [Image.asset(\"assets/images/logo.png\")]),\n     );\n   }\n }\n"
+                },
+                {
+                    "date": 1785484572835,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,11 @@\n   const OnboardingScreen({super.key});\n \n   @override\n   Widget build(BuildContext context) {\n-    return Scaffold(\n-      body: Column(children: [Image.asset(\"assets/images/logo.png\")]),\n+    return SafeArea(\n+      child: Scaffold(\n+        body: Column(children: [Image.asset(\"assets/images/logo.png\")]),\n+      ),\n     );\n   }\n }\n"
+                },
+                {
+                    "date": 1785484590024,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,11 @@\n   @override\n   Widget build(BuildContext context) {\n     return Scaffold(\n       body: SafeArea(\n-        child: Column(children: [Image.asset(\"assets/images/logo.png\")]),\n+        child: Column(\n+          crossAxisAlignment: CrossAxisAlignment.center,\n+          children: [Image.asset(\"assets/images/logo.png\")]),\n       ),\n     );\n   }\n }\n"
+                }
+            ],
+            "date": 1785484198411,
+            "name": "Commit-0",
+            "content": "import 'package:flutter/material.dart';\n\nclass OnboardingScreen extends StatelessWidget {\n  static const String routeName = \"Onboarding\";\n  const OnboardingScreen({super.key});\n\n  @override\n  Widget build(BuildContext context) {\n    return const Placeholder();\n  }\n}\n"
+        }
+    ]
+}

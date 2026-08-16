@@ -1,0 +1,74 @@
+{
+    "sourceFile": "lib/core/firebase_functions.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 14,
+            "patches": [
+                {
+                    "date": 1786096282532,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1786096412048,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,14 +1,17 @@\n import 'package:cloud_firestore/cloud_firestore.dart';\n \n class FirebaseFunctions {\n \n+createEventsCollection(){\n \n+  FirebaseFirestore.instance.collection(\"Events\")\n+  .withConverter(fromFirestore: fromFirestore, toFirestore: toFirestore)\n+}\n \n \n \n   addEvent(){\n \n-    FirebaseFirestore.instance.collection(\"Events\")\n-    .doc().set(data)\n+   \n   }\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1786096616734,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,12 +1,15 @@\n import 'package:cloud_firestore/cloud_firestore.dart';\n+import 'package:evently/models/event_model.dart';\n \n class FirebaseFunctions {\n \n createEventsCollection(){\n \n   FirebaseFirestore.instance.collection(\"Events\")\n-  .withConverter(fromFirestore: fromFirestore, toFirestore: toFirestore)\n+  .withConverter<EventModel>(fromFirestore: (snap,op){\n+    return EventModel.\n+  }, toFirestore: toFirestore)\n }\n \n \n \n"
+                },
+                {
+                    "date": 1786096785680,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,20 +1,22 @@\n import 'package:cloud_firestore/cloud_firestore.dart';\n import 'package:evently/models/event_model.dart';\n \n class FirebaseFunctions {\n+  static CollectionReference<EventModel> createEventsCollection() {\n+    return FirebaseFirestore.instance\n+        .collection(\"Events\")\n+        .withConverter<EventModel>(\n+          fromFirestore: (snap, op) {\n+            return EventModel.formJson(snap.data()!);\n+          },\n+          toFirestore: (model, option) {\n+            return model.toJson();\n+          },\n+        );\n+  }\n \n-createEventsCollection(){\n-\n-  FirebaseFirestore.instance.collection(\"Events\")\n\\ No newline at end of file\n-  .withConverter<EventModel>(fromFirestore: (snap,op){\n-    return EventModel.\n-  }, toFirestore: toFirestore)\n+  static void addEvent(EventModel model) {\n+    var collection = createEventsCollection();\n+    collection.add(model);\n+  }\n }\n-\n-\n-\n-  addEvent(){\n-\n-   \n-  }\n-}\n"
+                },
+                {
+                    "date": 1786096919201,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,7 +16,9 @@\n   }\n \n   static void addEvent(EventModel model) {\n     var collection = createEventsCollection();\n+    var docRef = collection.doc();\n+    model. = docRef.id;\n     collection.add(model);\n   }\n }\n"
+                },
+                {
+                    "date": 1786096941527,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,8 +17,8 @@\n \n   static void addEvent(EventModel model) {\n     var collection = createEventsCollection();\n     var docRef = collection.doc();\n-    model. = docRef.id;\n+    model.id = docRef.id;\n     collection.add(model);\n   }\n }\n"
+                },
+                {
+                    "date": 1786097015173,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,7 +18,7 @@\n   static void addEvent(EventModel model) {\n     var collection = createEventsCollection();\n     var docRef = collection.doc();\n     model.id = docRef.id;\n-    collection.add(model);\n+    docRef.set(model);\n   }\n }\n"
+                },
+                {
+                    "date": 1786102474534,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,5 +20,10 @@\n     var docRef = collection.doc();\n     model.id = docRef.id;\n     docRef.set(model);\n   }\n+\n+  Future<QuerySnapshot<EventModel>> getEvents() {\n+    var collection = createEventsCollection();\n+    return collection.get();\n+  }\n }\n"
+                },
+                {
+                    "date": 1786103714120,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,9 +21,9 @@\n     model.id = docRef.id;\n     docRef.set(model);\n   }\n \n-  Future<QuerySnapshot<EventModel>> getEvents() {\n+  static Future<QuerySnapshot<EventModel>> getEvents() {\n     var collection = createEventsCollection();\n     return collection.get();\n   }\n }\n"
+                },
+                {
+                    "date": 1786105504874,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,9 +21,9 @@\n     model.id = docRef.id;\n     docRef.set(model);\n   }\n \n-  static Future<QuerySnapshot<EventModel>> getEvents() {\n+  static Stream<QuerySnapshot<EventModel>> getEvents() {\n     var collection = createEventsCollection();\n-    return collection.get();\n+    return collection.snapshots();\n   }\n }\n"
+                },
+                {
+                    "date": 1786105551383,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,9 +21,9 @@\n     model.id = docRef.id;\n     docRef.set(model);\n   }\n \n-  static Stream<QuerySnapshot<EventModel>> getEvents() {\n+  static Future<QuerySnapshot<EventModel>> getEvents() {\n     var collection = createEventsCollection();\n-    return collection.snapshots();\n+    return collection.get();\n   }\n }\n"
+                },
+                {
+                    "date": 1786106171180,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,9 +21,9 @@\n     model.id = docRef.id;\n     docRef.set(model);\n   }\n \n-  static Future<QuerySnapshot<EventModel>> getEvents() {\n+  static Future<QuerySnapshot<EventModel>> getEvents(String id) {\n     var collection = createEventsCollection();\n-    return collection.get();\n+    return collection.where(\"category\", isEqualTo: id).get();\n   }\n }\n"
+                },
+                {
+                    "date": 1786106245635,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,7 +23,10 @@\n   }\n \n   static Future<QuerySnapshot<EventModel>> getEvents(String id) {\n     var collection = createEventsCollection();\n+    if(id==\"All\"){\n+      return collection.get();\n+    }\n     return collection.where(\"category\", isEqualTo: id).get();\n   }\n }\n"
+                },
+                {
+                    "date": 1786106258000,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,9 +23,9 @@\n   }\n \n   static Future<QuerySnapshot<EventModel>> getEvents(String id) {\n     var collection = createEventsCollection();\n-    if (id == \"All\") {\n+    if (id == \"all\") {\n       return collection.get();\n     }\n     return collection.where(\"category\", isEqualTo: id).get();\n   }\n"
+                },
+                {
+                    "date": 1786697370965,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -34,5 +34,11 @@\n       return collection.snapshots();\n     }\n     return collection.where(\"category\", isEqualTo: id).snapshots();\n   }\n+\n+\n+\n+  void register(String name , String email,String password){\n+\n+  }\n }\n"
+                }
+            ],
+            "date": 1786096282532,
+            "name": "Commit-0",
+            "content": "import 'package:cloud_firestore/cloud_firestore.dart';\n\nclass FirebaseFunctions {\n\n\n\n\n\n  addEvent(){\n\n    FirebaseFirestore.instance.collection(\"Events\")\n    .doc().set(data)\n  }\n}"
+        }
+    ]
+}

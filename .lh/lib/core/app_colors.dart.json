@@ -1,0 +1,42 @@
+{
+    "sourceFile": "lib/core/app_colors.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 6,
+            "patches": [
+                {
+                    "date": 1785485146584,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1785485172573,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,6 @@\n+import 'package:flutter/material.dart';\n+\n+class AppColors {\n+  static const Color primaryColor = Color(0xFF0E3A99);\n+  static const Color greyColor = Color(0xFF686868);\n+}\n"
+                },
+                {
+                    "date": 1785489347857,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,21 @@\n+import 'package:flutter/material.dart';\n+\n+abstract class AppColors {\n+  Color primaryColor();\n+  Color greyColor();\n+}\n+\n+class LightColor implements AppColors {\n+  @override\n+  Color greyColor() {\n+    return Color(0xFF0E3A99);\n+  }\n+\n+  @override\n+  Color primaryColor() {\n+    return Color(0xFF686868);\n+  }\n+\n+  // static const Color primaryColor = Color(0xFF0E3A99);\n+  // static const Color greyColor = Color(0xFF686868);\n+}\n"
+                },
+                {
+                    "date": 1785489755300,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,4 +18,19 @@\n \n   // static const Color primaryColor = Color(0xFF0E3A99);\n   // static const Color greyColor = Color(0xFF686868);\n }\n+\n+class DarkColor implements AppColors {\n+  @override\n+  Color greyColor() {\n+    return Color(0xFF0E3A99);\n+  }\n+\n+  @override\n+  Color primaryColor() {\n+    return Color(0xFF686868);\n+  }\n+\n+  // static const Color primaryColor = Color(0xFF0E3A99);\n+  // static const Color greyColor = Color(0xFF686868);\n+}\n"
+                },
+                {
+                    "date": 1785489807853,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,11 +14,8 @@\n   @override\n   Color primaryColor() {\n     return Color(0xFF686868);\n   }\n-\n-  // static const Color primaryColor = Color(0xFF0E3A99);\n-  // static const Color greyColor = Color(0xFF686868);\n }\n \n class DarkColor implements AppColors {\n   @override\n@@ -29,8 +26,5 @@\n   @override\n   Color primaryColor() {\n     return Color(0xFF686868);\n   }\n-\n-  // static const Color primaryColor = Color(0xFF0E3A99);\n-  // static const Color greyColor = Color(0xFF686868);\n }\n"
+                },
+                {
+                    "date": 1785490061219,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,14 +6,14 @@\n }\n \n class LightColor implements AppColors {\n   @override\n-  Color greyColor() {\n+  Color primaryColor() {\n     return Color(0xFF0E3A99);\n   }\n \n   @override\n-  Color primaryColor() {\n+  Color greyColor() {\n     return Color(0xFF686868);\n   }\n }\n \n"
+                },
+                {
+                    "date": 1785491659306,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,12 +19,12 @@\n \n class DarkColor implements AppColors {\n   @override\n   Color greyColor() {\n-    return Color(0xFF0E3A99);\n+    return Color(0xFF686868);\n   }\n \n   @override\n   Color primaryColor() {\n-    return Color(0xFF686868);\n+    return Colors.white;\n   }\n }\n"
+                }
+            ],
+            "date": 1785485146584,
+            "name": "Commit-0",
+            "content": "import 'package:flutter/material.dart';\n\nclass AppColors {\n  static const Color primaryColor = Color(0xFF0E3A99);\n}\n"
+        }
+    ]
+}
