@@ -1,10 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:evently/core/app_colors.dart';
 import 'package:evently/features/add_event/add_event_screen.dart';
 import 'package:evently/features/home/tabs/fav_tab.dart';
 import 'package:evently/features/home/tabs/home_tab.dart';
 import 'package:evently/features/home/tabs/profile_tab.dart';
+import 'package:evently/providers/theme_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = "HOME";
@@ -19,15 +20,14 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // The bottom bar is a light surface in both themes, so it uses the light palette.
-    AppColors colors = LightColor();
+    var provider = Provider.of<ThemeProvider>(context);
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
           await Navigator.pushNamed(context, AddEventScreen.routeName);
           setState(() {});
         },
-        backgroundColor: colors.primaryColor(),
+        backgroundColor: provider.colors.primaryColor(),
         shape: const CircleBorder(
           side: BorderSide(color: Colors.white, width: 4),
         ),
@@ -44,10 +44,10 @@ class _HomeScreenState extends State<HomeScreen> {
             currentIndex = value;
             setState(() {});
           },
-          backgroundColor: Colors.white,
+          backgroundColor: Theme.of(context).bottomNavigationBarTheme.backgroundColor,
           type: BottomNavigationBarType.fixed,
-          selectedItemColor: colors.primaryColor(),
-          unselectedItemColor: colors.greyColor(),
+          selectedItemColor: provider.colors.primaryColor(),
+          unselectedItemColor: provider.colors.greyColor(),
           items: [
             BottomNavigationBarItem(
               icon: const Icon(Icons.home_outlined),

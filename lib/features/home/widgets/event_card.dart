@@ -1,6 +1,7 @@
-import 'package:evently/core/app_colors.dart';
 import 'package:evently/models/event_model.dart';
+import 'package:evently/providers/theme_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class EventCard extends StatelessWidget {
   final EventModel event;
@@ -14,12 +15,11 @@ class EventCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // The card is a light surface in both themes, so it always uses the light palette.
-    AppColors colors = LightColor();
+    var provider = Provider.of<ThemeProvider>(context);
     return Container(
       padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(16),
       ),
       child: Column(
@@ -44,7 +44,7 @@ class EventCard extends StatelessWidget {
                     vertical: 6,
                   ),
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: Theme.of(context).cardColor,
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: Column(
@@ -53,7 +53,7 @@ class EventCard extends StatelessWidget {
                         event.day,
                         style: Theme.of(context).textTheme.labelMedium!
                             .copyWith(
-                              color: colors.primaryColor(),
+                              color: provider.colors.primaryColor(),
                               fontWeight: FontWeight.bold,
                             ),
                       ),
@@ -61,7 +61,7 @@ class EventCard extends StatelessWidget {
                         event.month,
                         style: Theme.of(context).textTheme.labelMedium!
                             .copyWith(
-                              color: colors.primaryColor(),
+                              color: provider.colors.primaryColor(),
                               fontSize: 14,
                             ),
                       ),
@@ -75,7 +75,7 @@ class EventCard extends StatelessWidget {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
             decoration: BoxDecoration(
-              color: const Color(0xFFF4F7FF),
+              color: provider.colors.backgroundColor(),
               borderRadius: BorderRadius.circular(12),
             ),
             child: Row(
@@ -85,7 +85,7 @@ class EventCard extends StatelessWidget {
                     event.title,
                     style: Theme.of(
                       context,
-                    ).textTheme.titleMedium!.copyWith(color: Colors.black),
+                    ).textTheme.titleMedium!.copyWith(color: provider.colors.mainTextColor()),
                   ),
                 ),
                 const SizedBox(width: 8),
@@ -93,7 +93,7 @@ class EventCard extends StatelessWidget {
                   onTap: onFavoriteTap,
                   child: Icon(
                     event.isFavorite ? Icons.favorite : Icons.favorite_border,
-                    color: colors.primaryColor(),
+                    color: provider.colors.primaryColor(),
                   ),
                 ),
               ],

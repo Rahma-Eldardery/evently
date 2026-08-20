@@ -1,10 +1,11 @@
 import 'dart:ui';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:evently/core/my_provider.dart';
 import 'package:evently/core/my_theme_data.dart';
 import 'package:evently/features/add_event/add_event_screen.dart';
+import 'package:evently/features/edit_event/edit_event.dart';
+import 'package:evently/features/event_datails/event_details_screen.dart';
 import 'package:evently/features/forget_password/forget_password_screen.dart';
 import 'package:evently/features/home/home_screen.dart';
 import 'package:evently/features/login/login.dart';
@@ -75,6 +76,8 @@ class MyApp extends StatelessWidget {
         ForgetPasswordScreen.routeName: (c) => ForgetPasswordScreen(),
         HomeScreen.routeName: (c) => HomeScreen(),
         AddEventScreen.routeName: (c) => AddEventScreen(),
+        EventDetailsScreen.routeName: (c) => EventDetailsScreen(),
+        EditEventScreen.routeName: (c) => EditEventScreen(),
       },
       initialRoute: userProvider.firebaseUser != null
           ? HomeScreen.routeName

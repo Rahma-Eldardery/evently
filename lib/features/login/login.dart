@@ -136,7 +136,7 @@ class LoginScreen extends StatelessWidget {
 
                   CustomElevatedButton(
                     text: "login_google".tr(),
-                    backgroundColor: Colors.white,
+                    backgroundColor: Theme.of(context).cardColor,
                     textStyle: Theme.of(context).textTheme.labelMedium,
                     icon: Image.asset("assets/images/image 6.png"),
                     onPressed: () {

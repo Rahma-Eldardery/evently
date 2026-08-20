@@ -7,19 +7,18 @@ import 'package:evently/features/home/widgets/category_chip.dart';
 import 'package:evently/models/event_category.dart';
 import 'package:evently/models/event_model.dart';
 import 'package:evently/providers/theme_provider.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class AddEventScreen extends StatefulWidget {
-  static const String routeName = "add_event";
-  const AddEventScreen({super.key});
+class EditEventScreen extends StatefulWidget {
+  static const String routeName = "edit_event";
+  const EditEventScreen({super.key});
 
   @override
-  State<AddEventScreen> createState() => _AddEventScreenState();
+  State<EditEventScreen> createState() => _EditEventScreenState();
 }
 
-class _AddEventScreenState extends State<AddEventScreen> {
+class _EditEventScreenState extends State<EditEventScreen> {
   final formKey = GlobalKey<FormState>();
   final titleController = TextEditingController();
   final descriptionController = TextEditingController();
@@ -27,6 +26,31 @@ class _AddEventScreenState extends State<AddEventScreen> {
   int selectedCategory = 0;
   DateTime? selectedDate;
   TimeOfDay? selectedTime;
+
+  late EventModel eventToEdit;
+  bool _initialized = false;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (!_initialized) {
+      eventToEdit = ModalRoute.of(context)!.settings.arguments as EventModel;
+
+      titleController.text = eventToEdit.title;
+      descriptionController.text = eventToEdit.description;
+      selectedDate = eventToEdit.date;
+      selectedTime = TimeOfDay(
+        hour: eventToEdit.date.hour,
+        minute: eventToEdit.date.minute,
+      );
+      selectedCategory = EventCategory.categories.indexWhere(
+        (c) => c.id == eventToEdit.category.id,
+      );
+      if (selectedCategory == -1) selectedCategory = 0;
+
+      _initialized = true;
+    }
+  }
 
   @override
   void dispose() {
@@ -41,7 +65,7 @@ class _AddEventScreenState extends State<AddEventScreen> {
     var category = EventCategory.categories[selectedCategory];
 
     return Scaffold(
-      appBar: CustomAppBar(title: "add_event".tr()),
+      appBar: CustomAppBar(title: "edit_event".tr()),
       body: Form(
         key: formKey,
         child: SingleChildScrollView(
@@ -125,7 +149,10 @@ class _AddEventScreenState extends State<AddEventScreen> {
                 color: provider.colors.primaryColor(),
               ),
               const SizedBox(height: 32),
-              CustomElevatedButton(text: "add_event".tr(), onPressed: addEvent),
+              CustomElevatedButton(
+                text: "edit_event".tr(),
+                onPressed: editEvent,
+              ),
             ],
           ),
         ),
@@ -171,7 +198,7 @@ class _AddEventScreenState extends State<AddEventScreen> {
     var date = await showDatePicker(
       context: context,
       initialDate: selectedDate ?? now,
-      firstDate: now,
+      firstDate: now.subtract(const Duration(days: 365 * 5)),
       lastDate: now.add(const Duration(days: 365)),
     );
     if (date == null) return;
@@ -191,7 +218,7 @@ class _AddEventScreenState extends State<AddEventScreen> {
     });
   }
 
-  void addEvent() {
+  void editEvent() {
     if (formKey.currentState!.validate() == false) return;
     if (selectedDate == null || selectedTime == null) {
       ScaffoldMessenger.of(
@@ -200,23 +227,18 @@ class _AddEventScreenState extends State<AddEventScreen> {
       return;
     }
 
-    FirebaseFunctions.addEvent(
-      EventModel(
-        title: titleController.text.trim(),
-        description: descriptionController.text.trim(),
-        userId: FirebaseAuth.instance.currentUser!.uid,
-        date: DateTime(
-          selectedDate!.year,
-          selectedDate!.month,
-          selectedDate!.day,
-          selectedTime!.hour,
-          selectedTime!.minute,
-        ),
-        isFavorite: false,
-        category: EventCategory.categories[selectedCategory],
-      ),
+    eventToEdit.title = titleController.text.trim();
+    eventToEdit.description = descriptionController.text.trim();
+    eventToEdit.date = DateTime(
+      selectedDate!.year,
+      selectedDate!.month,
+      selectedDate!.day,
+      selectedTime!.hour,
+      selectedTime!.minute,
     );
+    eventToEdit.category = EventCategory.categories[selectedCategory];
 
+    FirebaseFunctions.updateEvent(eventToEdit);
     Navigator.pop(context);
   }
 }

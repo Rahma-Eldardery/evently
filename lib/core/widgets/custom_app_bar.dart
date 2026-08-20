@@ -5,8 +5,8 @@ import 'package:provider/provider.dart';
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
 
-  const CustomAppBar({super.key, required this.title});
-
+  const CustomAppBar({super.key, required this.title, this.actions});
+  final List<Widget>? actions;
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 
@@ -46,6 +46,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           context,
         ).textTheme.titleLarge!.copyWith(color: provider.colors.primaryColor()),
       ),
+
+      actions: actions,
     );
   }
 }

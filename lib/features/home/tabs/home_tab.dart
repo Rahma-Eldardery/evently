@@ -3,6 +3,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:evently/core/firebase_functions.dart';
 import 'package:evently/core/my_provider.dart';
 import 'package:evently/features/add_event/add_event_screen.dart';
+import 'package:evently/features/event_datails/event_details_screen.dart';
 import 'package:evently/features/home/widgets/category_chip.dart';
 import 'package:evently/features/home/widgets/event_card.dart';
 import 'package:evently/models/event_category.dart';
@@ -139,10 +140,9 @@ class _HomeTabState extends State<HomeTab> {
                 padding: const EdgeInsets.all(16),
                 itemBuilder: (context, index) => InkWell(
                   onTap: () {
-                    print(data[index].category.id);
                     Navigator.pushNamed(
                       context,
-                      AddEventScreen.routeName,
+                      EventDetailsScreen.routeName,
                       arguments: data[index],
                     );
                   },

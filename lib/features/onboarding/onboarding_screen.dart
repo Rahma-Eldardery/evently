@@ -1,9 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:evently/core/app_colors.dart';
 import 'package:evently/features/login/login.dart';
 import 'package:evently/providers/theme_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class OnboardingScreen extends StatelessWidget {

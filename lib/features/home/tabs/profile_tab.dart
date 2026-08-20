@@ -145,7 +145,7 @@ class ProfileOptionCard extends StatelessWidget {
         // The card is a light surface in both themes, so its text stays dark.
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Theme.of(context).cardColor,
           borderRadius: BorderRadius.circular(16),
         ),
         child: Row(
@@ -155,7 +155,6 @@ class ProfileOptionCard extends StatelessWidget {
                 title,
                 style: Theme.of(context).textTheme.titleLarge!.copyWith(
                   fontSize: 18,
-                  color: Colors.black,
                 ),
               ),
             ),

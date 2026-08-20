@@ -56,5 +56,6 @@
     "event_time": "وقت الفعالية",
     "choose_time": "اختر الوقت",
     "select_date_time": "من فضلك اختر التاريخ والوقت",
-    "edit_event": "تعديل الفعالية"
+    "edit_event": "تعديل الفعالية",
+    "event_datails": "تفاصيل الفعالية"
 }

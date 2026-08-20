@@ -38,10 +38,16 @@ class FirebaseFunctions {
     docRef.set(model);
   }
 
-  static updateEvent(EventModel model) {
+  static void updateEvent(EventModel model) {
     var collection = createEventsCollection();
 
     collection.doc(model.id).update(model.toJson());
+  }
+
+  static void deleteEvent(EventModel model) {
+    var collection = createEventsCollection();
+
+    collection.doc(model.id).delete();
   }
 
   static Stream<QuerySnapshot<EventModel>> getfavEvents() {
